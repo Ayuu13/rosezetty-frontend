@@ -55,11 +55,11 @@ export default {
   methods: {
     async fetchPesananDetails() {
       try {
-        const statusResponse = await axios.get('http://localhost:3000/api/status-pesanan');
+        const statusResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/status-pesanan`);
         this.statuses = statusResponse.data;
         console.log('Data statuses:', this.statuses);
 
-        const pesananResponse = await axios.get('http://localhost:3000/api/pesanan');
+        const pesananResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/pesanan`);
         this.pesananData = pesananResponse.data;
         console.log('Data Pesanan:', this.pesananData);
 

@@ -61,7 +61,7 @@ export default defineComponent({
     async fetchAkunData() {
       const userId = this.$route.params.id;
       try {
-        const response = await axios.get(`http://localhost:3000/api/user/${userId}`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/${userId}`);
         this.akun = response.data;
 
         // Mengisi form dengan data akun
@@ -89,7 +89,7 @@ export default defineComponent({
         };
 
         const userId = this.$route.params.id;
-        await axios.put(`http://localhost:3000/api/akun-edit/${userId}`, this.form, config);
+        await axios.put(`${import.meta.env.VITE_BACKEND_URL}/akun-edit/${userId}`, this.form, config);
         alert('Profil berhasil diperbarui!');
         this.$router.push('/');
       } catch (error) {

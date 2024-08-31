@@ -51,7 +51,7 @@ export default {
   methods: {
     async regis() {
       try {
-        const response = await axios.post('http://localhost:3000/api/register', {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/register`, {
           nama: this.nama,
           email: this.email,
           nowa: this.nowa,

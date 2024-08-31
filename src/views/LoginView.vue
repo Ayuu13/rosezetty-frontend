@@ -46,7 +46,7 @@ export default {
     async handleLogin() {
       try {
         console.log('Attempting login');
-        const response = await axios.post('http://localhost:3000/api/masuk', {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/masuk`, {
           email: this.email,
           katasandi: this.katasandi
         });

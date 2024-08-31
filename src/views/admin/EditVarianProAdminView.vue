@@ -85,7 +85,7 @@ export default defineComponent({
     async fetchVarianProduk() {
       const varianId = this.$route.params.id;
       try {
-        const response = await axios.get(`http://localhost:3000/api/varian-detail/${varianId}`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/varian-detail/${varianId}`);
         const varianProduk: VarianProduk = response.data[0]; // Assuming the first item in array
 
         if (varianProduk) {
@@ -109,7 +109,7 @@ export default defineComponent({
     },
     async fetchSistemBayarList() {
       try {
-        const response = await axios.get('http://localhost:3000/api/sistem-bayar');
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/sistem-bayar`);
         this.sistemBayar = response.data;
       } catch (error) {
         console.error('Error fetching sistem bayar:', error);
@@ -138,7 +138,7 @@ export default defineComponent({
           };
 
           const productId = this.$route.params.id; 
-          const response = await axios.put(`http://localhost:3000/api/varian-produk/edit/${productId}`, this.form, config);
+          const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/varian-produk/edit/${productId}`, this.form, config);
           alert('Produk berhasil diperbarui!');
           this.$router.push('/admin/produk');
         } else {

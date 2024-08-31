@@ -77,7 +77,7 @@ export default {
     async fetchPesanan(token) {
       try {
         const pesananId = this.$route.params.id;
-        const pesananResponse = await axios.get(`http://localhost:3000/api/pesanan-detail/${pesananId}`, {
+        const pesananResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/pesanan-detail/${pesananId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }
@@ -96,7 +96,7 @@ export default {
     async fetchTestimoni() {
       const pesanId = this.$route.params.id;
       try {
-        const testiResponse = await axios.get(`http://localhost:3000/api/testimoni-pesan/${pesanId}`);
+        const testiResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/testimoni-pesan/${pesanId}`);
         this.testimonis = testiResponse.data;
         console.log('Data Testimoni:', this.testimonis);
       } catch (error) {
@@ -104,7 +104,7 @@ export default {
       }
     },
     getItemImageUrl(imageFileName) {
-      return `http://localhost:3000/upload/${imageFileName}`;
+      return `${import.meta.env.VITE_UPLOAD_URL}/${imageFileName}`;
     },
     formatDate(dateString) {
       if (!dateString) return 'Tidak tersedia';

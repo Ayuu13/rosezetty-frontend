@@ -78,22 +78,22 @@ export default {
   methods: {
     async fetchDashboardData() {
       try {
-        const produkResponse = await axios.get('http://localhost:3000/api/varian-produk');
+        const produkResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/varian-produk`);
         this.produk = produkResponse.data;
         this.totalProduk = this.produk.length;
 
-        const userResponse = await axios.get('http://localhost:3000/api/users');
+        const userResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users`);
         this.users = userResponse.data;
         this.totalUser = this.users.length;
 
         const pelanggan = this.users.filter(user => user.peran_id === 2);
         this.totalPelanggan = pelanggan.length;
 
-        const penjualanResponse = await axios.get('http://localhost:3000/api/pesanan');
+        const penjualanResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/pesanan`);
         this.pesanan = penjualanResponse.data;
         this.totalPenjualan = this.pesanan.length;
 
-        const statusResponse = await axios.get('http://localhost:3000/api/status-pesanan');
+        const statusResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/status-pesanan`);
         const statusList = statusResponse.data;
 
         const statusCounts = this.pesanan.reduce((acc, pesanan) => {

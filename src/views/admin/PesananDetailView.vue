@@ -85,7 +85,7 @@ export default {
     async fetchProductDetails(token) {
       const pesanId = this.$route.params.id; 
       try {
-        const pesananResponse = await axios.get(`http://localhost:3000/api/pesanan/${pesanId}`, {
+        const pesananResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/pesanan/${pesanId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }
@@ -93,7 +93,7 @@ export default {
         this.pesanan = pesananResponse.data;
         this.selectedStatus = this.pesanan[0]?.status?.id;
 
-        const pesananDetailResponse = await axios.get(`http://localhost:3000/api/pesanan-detail/${pesanId}`, {
+        const pesananDetailResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/pesanan-detail/${pesanId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }
@@ -106,7 +106,7 @@ export default {
     },
     async fetchStatusList() {
       try {
-        const statusResponse = await axios.get('http://localhost:3000/api/status-pesanan');
+        const statusResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/status-pesanan`);
         this.statuses = statusResponse.data;
       } catch (error) {
         console.error('Error fetching status list:', error);
@@ -117,7 +117,7 @@ export default {
       if (this.selectedStatus) {
         try {
           const pesanId = this.$route.params.id;
-          await axios.put(`http://localhost:3000/api/pesanan/edit/${pesanId}`, { status_id: this.selectedStatus }, {
+          await axios.put(`${import.meta.env.VITE_BACKEND_URL}/pesanan/edit/${pesanId}`, { status_id: this.selectedStatus }, {
             headers: {
               Authorization: `Bearer ${token}`,
             }
@@ -132,7 +132,7 @@ export default {
     async fetchTestimoni() {
       const pesanId = this.$route.params.id;
       try {
-        const testiResponse = await axios.get(`http://localhost:3000/api/testimoni/${pesanId}`);
+        const testiResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/testimoni/${pesanId}`);
         this.testimonis = testiResponse.data;
         console.log('Data Testimoni:', this.testimonis);
       } catch (error) {
@@ -146,7 +146,7 @@ export default {
       return 'Rp. 0';
     },
     getVariantImageUrl(imageFileName) {
-      return imageFileName ? `http://localhost:3000/upload/${imageFileName}` : '';
+      return imageFileName ? `${import.meta.env.VITE_UPLOAD_URL}/${imageFileName}` : '';
     }
   }
 };

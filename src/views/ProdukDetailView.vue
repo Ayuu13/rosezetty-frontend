@@ -46,17 +46,17 @@ export default {
   async fetchProductDetails() {
     const varianId = this.$route.params.id;
     try {
-      const variantsResponse = await axios.get(`http://localhost:3000/api/varian-detail/${varianId}`);
+      const variantsResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/varian-detail/${varianId}`);
       this.variants = variantsResponse.data;
 
       if (this.variants.length > 0) {
         const productId = this.variants[0].produk_id;
 
-        const productResponse = await axios.get(`http://localhost:3000/api/produk/${productId}`);
+        const productResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/produk/${productId}`);
         this.product = productResponse.data;
 
         const sistembayarIds = this.variants.map(variant => variant.sistembayar_id);
-        const sistembayarDetailsResponse = await axios.get(`http://localhost:3000/api/sistem-bayar`, {
+        const sistembayarDetailsResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/sistem-bayar`, {
             params: { ids: sistembayarIds }
         });
 
@@ -82,7 +82,7 @@ export default {
       });
   },
   getVariantImageUrl(imageFileName) {
-    return `http://localhost:3000/upload/${imageFileName}`;
+    return `${import.meta.env.VITE_UPLOAD_URL}/${imageFileName}`;
   },
   formatDate(dateString) {
       if (!dateString) return 'Tidak tersedia';

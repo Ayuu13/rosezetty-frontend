@@ -31,7 +31,7 @@ export default {
   methods: {
     async fetchProducts() {
       try {
-        const response = await axios.get('http://localhost:3000/api/produk');
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/produk`);
         console.log(response.data);  
         this.products = response.data;
       } catch (error) {

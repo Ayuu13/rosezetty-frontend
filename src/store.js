@@ -33,7 +33,7 @@ export default createStore({
     },
     async logout({ commit }) {
       try {
-        await axios.post('http://localhost:3000/api/logout');
+        await axios.post(`${import.meta.env.VITE_BACKEND_URL}/logout`);
         commit('logout');
       } catch (error) {
         console.error('Error during logout:', error);

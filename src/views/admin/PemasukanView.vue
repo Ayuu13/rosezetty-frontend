@@ -59,12 +59,12 @@ export default {
     async fetchProductDetails() {
       try {
         // Fetch data metode pembayaran
-        const metodeResponse = await axios.get('http://localhost:3000/api/metode-bayar');
+        const metodeResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/metode-bayar`);
         this.metodes = metodeResponse.data;
         console.log('Data Metode Bayar:', this.metodes);
 
         // Fetch data pesanan
-        const pesananResponse = await axios.get('http://localhost:3000/api/pesanan');
+        const pesananResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/pesanan`);
         this.pesanans = pesananResponse.data;
         console.log('Data Pesanan:', this.pesanans);
 
@@ -88,7 +88,7 @@ export default {
       }
     },
     getVariantImageUrl(imageFileName) {
-      return `http://localhost:3000/upload/${imageFileName}`;
+      return `${import.meta.env.VITE_UPLOAD_URL}/${imageFileName}`;
     },
     addProduct() {
       this.$router.push(`/admin/metode-bayar/tambah`);

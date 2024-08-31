@@ -91,7 +91,7 @@ export default defineComponent({
     async fetchProductData() {
       const productId = this.$route.params.id;
       try {
-        const response = await axios.get(`http://localhost:3000/api/produk/${productId}`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/produk/${productId}`);
         this.products = response.data;
 
         console.log(this.products);
@@ -115,7 +115,7 @@ export default defineComponent({
     },
     async fetchJenisProduk() {
       try {
-        const response = await axios.get('http://localhost:3000/api/jenis-produk');
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/jenis-produk`);
         this.jenisProduk = response.data;
       } catch (error) {
         console.error('Error fetching jenis produk data:', error);
@@ -123,7 +123,7 @@ export default defineComponent({
     },
     async fetchBarangStatus() {
       try {
-        const response = await axios.get('http://localhost:3000/api/status-barang');
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/status-barang`);
         this.barangStatus = response.data;
       } catch (error) {
         console.error('Error fetching barang status data:', error);
@@ -146,7 +146,7 @@ export default defineComponent({
           };
 
           const productId = this.$route.params.id; 
-          await axios.put(`http://localhost:3000/api/produk/edit/${productId}`, this.form, config);
+          await axios.put(`${import.meta.env.VITE_BACKEND_URL}/produk/edit/${productId}`, this.form, config);
           alert('Produk berhasil diperbarui!');
           this.$router.push('/admin/produk');
         } else {

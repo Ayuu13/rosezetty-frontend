@@ -62,7 +62,7 @@ export default defineComponent({
             }
           };
 
-          const response = await axios.post('http://localhost:3000/api/metode-bayar/tambah', this.form, config);
+          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/metode-bayar/tambah`, this.form, config);
           alert('Metode Pembayaran berhasil ditambahkan!');
           this.$router.push('/admin/pemasukan');
         } else {

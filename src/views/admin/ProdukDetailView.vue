@@ -65,21 +65,21 @@ export default {
     async fetchProductDetails() {
       const productId = this.$route.params.produk_id; 
       try {
-        const productResponse = await axios.get(`http://localhost:3000/api/produk/${productId}`);
+        const productResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/produk/${productId}`);
         this.product = productResponse.data;
         console.log(productResponse);
 
-        const produkResponse = await axios.get(`http://localhost:3000/api/total-pesan/${productId}`);
+        const produkResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/total-pesan/${productId}`);
         this.totalProduk = produkResponse.data[productId];
         console.log(produkResponse);
 
         // Ambil varian produk terkait
-        const variantsResponse = await axios.get(`http://localhost:3000/api/varian/${productId}`);
+        const variantsResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/varian/${productId}`);
         this.variants = variantsResponse.data;
 
         // Ambil total pesanan untuk setiap varian
         for (let variant of this.variants) {
-          const pesananResponse = await axios.get(`http://localhost:3000/api/pesanan-total/${variant.id}`);
+          const pesananResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/pesanan-total/${variant.id}`);
           const variantData = pesananResponse.data[variant.id];
           if (variantData) {
             variant.totalPesanan = variantData.total;  // Akses "total" dari data yang diambil
@@ -91,7 +91,7 @@ export default {
 
         // Fetch payment system details for each variant
         const sistembayarIds = this.variants.map(variant => variant.sistembayar_id);
-        const sistembayarDetailsResponse = await axios.get('http://localhost:3000/api/sistem-bayar', {
+        const sistembayarDetailsResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/sistem-bayar`, {
           params: { ids: sistembayarIds }
         });
 
@@ -111,7 +111,7 @@ export default {
       return amount.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
     },
     getVariantImageUrl(imageFileName) {
-      return `http://localhost:3000/upload/${imageFileName}`;
+      return `${import.meta.env.VITE_UPLOAD_URL}/${imageFileName}`;
     },
     addProduct() {
       this.$router.push(`/admin/produk-varian/${this.product[0]?.id}/tambah`);
@@ -147,7 +147,7 @@ export default {
               'Authorization': `Bearer ${token}` 
             }
           };
-        await axios.delete(`http://localhost:3000/api/varian-produk/${variantId}`, config);
+        await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/varian-produk/${variantId}`, config);
         this.variants = this.variants.filter(variant => variant.id !== variantId);
         alert('Varian berhasil dihapus!');
       } catch (error) {

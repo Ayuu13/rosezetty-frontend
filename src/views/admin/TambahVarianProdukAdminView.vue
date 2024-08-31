@@ -69,7 +69,7 @@ export default defineComponent({
     },
     async fetchProductDetail(productId) {
       try {
-        const response = await axios.get(`http://localhost:3000/api/produk/${productId}`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/produk/${productId}`);
         this.produk = response.data[0]?.nama;
 
         console.log('produk data:', this.produk);
@@ -79,7 +79,7 @@ export default defineComponent({
     },
     async fetchData() {
       try {
-        const sistembayarResponse = await axios.get(`http://localhost:3000/api/sistem-bayar`);
+        const sistembayarResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/sistem-bayar`);
         this.sistemBayarList = sistembayarResponse.data;
 
         // console.log('produk data:', varianProduk.produk);
@@ -117,7 +117,7 @@ export default defineComponent({
           if (this.form.gambar) {
             formData.append('gambar', this.form.gambar);
           }
-          const response = await axios.post('http://localhost:3000/api/varian-produk/tambah', formData, config);
+          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/varian-produk/tambah`, formData, config);
         alert('Varian Produk berhasil ditambahkan!');
         this.$router.push('/admin/produk');
         

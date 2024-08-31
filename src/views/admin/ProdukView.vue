@@ -80,8 +80,8 @@ export default {
     async fetchData() {
       try {
         const [produkResponse, jenisProdukResponse] = await Promise.all([
-          axios.get('http://localhost:3000/api/produk'),
-          axios.get('http://localhost:3000/api/jenis-produk')
+          axios.get(`${import.meta.env.VITE_BACKEND_URL}/produk`),
+          axios.get(`${import.meta.env.VITE_BACKEND_URL}/jenis-produk`)
         ]);
         this.products = produkResponse.data;
 
@@ -92,7 +92,7 @@ export default {
 
         await Promise.all(this.products.map(async (product) => {
           try {
-            const totalProdukResponse = await axios.get(`http://localhost:3000/api/total-pesan/${product.id}`);
+            const totalProdukResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/total-pesan/${product.id}`);
             product.totalPesanan = totalProdukResponse.data[product.id]?.total || 0;
           } catch (error) {
             console.error(`Error fetching total pesanan for product ${product.id}:`, error);

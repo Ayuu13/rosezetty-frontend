@@ -70,7 +70,7 @@ export default {
       console.log('FormData:', formData);
 
       try {
-        const response = await axios.post('http://localhost:3000/api/testimoni/tambah', formData, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/testimoni/tambah`, formData, {
           headers: {
             Authorization: `Bearer ${token}`,
             'Content-Type': 'multipart/form-data'

@@ -43,7 +43,7 @@ export default defineComponent({
     async fetchTestimoni() {
       const testiId = this.$route.params.id;
       try {
-        const testiResponse = await axios.get(`http://localhost:3000/api/testimoni/${testiId}`);
+        const testiResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/testimoni/${testiId}`);
         this.testimoni = testiResponse.data;
         console.log('Data Testimoni:', this.testimoni);
       } catch (error) {
@@ -52,7 +52,7 @@ export default defineComponent({
       }
     },
     getItemImageUrl(imageFileName: string) {
-      return `http://localhost:3000/upload/${imageFileName}`;
+      return `${import.meta.env.VITE_UPLOAD_URL}/${imageFileName}`;
     },
     handleFileUpload(event: Event) {
       const target = event.target as HTMLInputElement;
@@ -86,7 +86,7 @@ export default defineComponent({
         };
 
         const testiId = this.$route.params.id;
-        const response = await axios.put(`http://localhost:3000/api/testimoni/edit/${testiId}`, formData, config);
+        const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/testimoni/edit/${testiId}`, formData, config);
         console.log('Data yang dikirim:', formData);
 
         alert('Testimoni berhasil diperbarui!');

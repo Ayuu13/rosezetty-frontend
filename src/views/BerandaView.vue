@@ -56,7 +56,7 @@ export default {
   methods: {
     async fetchCategories() { 
       try {
-        const productResponse = await axios.get(`http://localhost:3000/api/jenis-produk`);
+        const productResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/jenis-produk`);
         this.categories = productResponse.data;
         console.log(productResponse);
 
@@ -74,14 +74,14 @@ export default {
     },
     async fetchTestimoni() {
       try {
-        const response = await axios.get('http://localhost:3000/api/testimoni');
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/testimoni`);
         this.testimonis = response.data;
       } catch (error) {
         console.error('Error fetching Testimoni:', error);
       }
     },
     getVariantImageUrl(imageFileName) {
-      return `http://localhost:3000/upload/${imageFileName}`;
+      return `${import.meta.env.VITE_UPLOAD_URL}/${imageFileName}`;
     },
     formatDate(dateString) {
       if (!dateString) return 'Tidak tersedia';

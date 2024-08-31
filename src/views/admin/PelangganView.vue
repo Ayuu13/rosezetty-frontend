@@ -59,14 +59,14 @@ export default {
           throw new Error('Token tidak ditemukan');
         }
 
-        const pelanggansResponse = await axios.get('http://localhost:3000/api/users');
+        const pelanggansResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/users`);
         this.pelanggans = pelanggansResponse.data.filter(user => user.peran_id === 2);
         console.log('Data Pelanggan:', this.pelanggans);
 
         for (const user of this.pelanggans) {
           const userId = user.id;
           try {
-            const pesananResponse = await axios.get(`http://localhost:3000/api/riwayat-pesanan/${userId}`, {
+            const pesananResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/riwayat-pesanan/${userId}`, {
               headers: {
                 Authorization: `Bearer ${token}`,
               }

@@ -61,7 +61,7 @@ export default defineComponent({
     async fetchMetodeBayar() {
       const metodeId = this.$route.params.id;
       try {
-        const response = await axios.get(`http://localhost:3000/api/metode-bayar/${metodeId}`);
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/metode-bayar/${metodeId}`);
         const metodeBayar = response.data;
 
         if (metodeBayar) {
@@ -81,7 +81,7 @@ export default defineComponent({
       }
     },
     getItemImageUrl(imageFileName) {
-      return `http://localhost:3000/upload/${imageFileName}`;
+      return `${import.meta.env.VITE_UPLOAD_URL}/${imageFileName}`;
     },
     handleFileUpload(event: Event) {
       const target = event.target as HTMLInputElement;
@@ -112,7 +112,7 @@ export default defineComponent({
           };
 
           const metodeId = this.$route.params.id; 
-          const response = await axios.put(`http://localhost:3000/api/metode-bayar/edit/${metodeId}`, formData, config);
+          const response = await axios.put(`${import.meta.env.VITE_BACKEND_URL}/metode-bayar/edit/${metodeId}`, formData, config);
           console.log(response);
           alert('Metode Pembayaran berhasil diperbarui!');
           this.$router.push('/admin/pemasukan');

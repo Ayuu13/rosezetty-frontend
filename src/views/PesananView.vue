@@ -84,7 +84,7 @@ export default {
     async fetchPesanan(token) {
       try {
         const userId = this.userId;
-        const response = await axios.get(`http://localhost:3000/api/riwayat-pesanan/${userId}`, {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/riwayat-pesanan/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }
@@ -112,9 +112,9 @@ export default {
         const barangIds = this.pesananList.map(pesanan => pesanan.barang_id);
 
         const [statusResponses, versiProdukResponses, barangResponses] = await Promise.all([
-          axios.get('http://localhost:3000/api/status-pesanan', { params: { ids: statusIds } }),
-          axios.get('http://localhost:3000/api/varian-produk', { params: { ids: versiProdukIds } }),
-          axios.get('http://localhost:3000/api/status-barang', { params: { ids: barangIds } })
+          axios.get(`${import.meta.env.VITE_BACKEND_URL}/status-pesanan`, { params: { ids: statusIds } }),
+          axios.get(`${import.meta.env.VITE_BACKEND_URL}/varian-produk`, { params: { ids: versiProdukIds } }),
+          axios.get(`${import.meta.env.VITE_BACKEND_URL}/status-barang`, { params: { ids: barangIds } })
         ]);
 
         this.pesananList.forEach(pesanan => {

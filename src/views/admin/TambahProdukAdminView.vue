@@ -53,7 +53,7 @@ export default defineComponent({
   methods: {
     async fetchJenisProduk() {
       try {
-        const response = await axios.get('http://localhost:3000/api/jenis-produk');
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/jenis-produk`);
         this.jenisProduk = response.data;
       } catch (error) {
         console.error('Error fetching jenis produk:', error);
@@ -76,7 +76,7 @@ export default defineComponent({
             }
           };
 
-          const response = await axios.post('http://localhost:3000/api/produk/tambah', this.form, config);
+          const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/produk/tambah`, this.form, config);
           alert('Produk berhasil ditambahkan!');
           this.$router.push('/admin/produk');
         } else {

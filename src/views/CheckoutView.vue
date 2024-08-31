@@ -122,7 +122,7 @@ export default {
 
     const fetchMetodes = async () => {
       try {
-        const response = await axios.get('http://localhost:3000/api/metode-bayar');
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/metode-bayar`);
         metodes.value = response.data;
       } catch (error) {
         console.error('Error fetching metodes:', error);
@@ -136,7 +136,7 @@ export default {
     });
 
     const getVariantImageUrl = (imageFileName) => {
-      return `http://localhost:3000/upload/${imageFileName}`;
+      return `${import.meta.env.VITE_UPLOAD_URL}/${imageFileName}`;
     };
 
     const checkout = async () => {
@@ -157,7 +157,7 @@ export default {
         }
 
         const token = localStorage.getItem('token'); // Ambil token dari local storage
-        const response = await axios.post('http://localhost:3000/api/pesanan/tambah', formData, {
+        const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/pesanan/tambah`, formData, {
           headers: {
             'Content-Type': 'multipart/form-data',
             'Authorization': `Bearer ${token}` // Sertakan token dalam header

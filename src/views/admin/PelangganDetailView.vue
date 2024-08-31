@@ -58,7 +58,7 @@ export default {
     async fetchUserDetails(token) {
       const userId = this.$route.params.id;
       try {
-        const userResponse = await axios.get(`http://localhost:3000/api/user/${userId}`, {
+        const userResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/user/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }
@@ -67,7 +67,7 @@ export default {
         console.log('User Response:', userResponse);
 
         // Ambil data pesanan pengguna
-        const pesananResponse = await axios.get(`http://localhost:3000/api/riwayat-pesanan/${userId}`, {
+        const pesananResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/riwayat-pesanan/${userId}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           }
@@ -84,7 +84,7 @@ export default {
           pesanan.details = []; // Initialize details array for each pesanan
           for (let detail of pesanan.pesanandetail) {
             if (detail.versiproduk_id) {
-              const versiproResponse = await axios.get(`http://localhost:3000/api/varian-detail/${detail.versiproduk_id}`);
+              const versiproResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/varian-detail/${detail.versiproduk_id}`);
               const versiData = versiproResponse.data;
               console.log('Versi Data:', versiData);
 

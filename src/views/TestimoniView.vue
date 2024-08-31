@@ -38,7 +38,7 @@ export default {
   methods: {
     async fetchTestimoni() {
       try {
-        const response = await axios.get('http://localhost:3000/api/testimoni');
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/testimoni`);
         console.log(response.data);  
         this.testimonis = response.data;
 
@@ -47,7 +47,7 @@ export default {
       }
     },
     getVariantImageUrl(imageFileName) {
-    return `http://localhost:3000/upload/${imageFileName}`;
+    return `${import.meta.env.VITE_UPLOAD_URL}/${imageFileName}`;
     },
     formatDate(dateString) {
       if (!dateString) return 'Tidak tersedia';
