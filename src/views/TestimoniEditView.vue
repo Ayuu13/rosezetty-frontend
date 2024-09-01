@@ -25,11 +25,10 @@
 
 <script lang="ts">
 import axios from '@/libs/axios';
-import { defineComponent } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { mapGetters } from 'vuex';
 
-export default defineComponent({
+export default {
 	data() {
 		return {
 			testimoni: [],
@@ -109,7 +108,7 @@ export default defineComponent({
 			}
 		},
 	},
-});
+};
 </script>
 
 <style scoped>
