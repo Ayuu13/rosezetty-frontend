@@ -41,6 +41,7 @@
 
 <script>
 import axios from '@/libs/axios';
+import { IMAGE_URL } from '@/libs/constant';
 
 export default {
 	data() {
@@ -80,7 +81,7 @@ export default {
 			}
 		},
 		getVariantImageUrl(imageFileName) {
-			return `${import.meta.env.VITE_BACKEND_URL}upload/${imageFileName}`;
+			return `${IMAGE_URL}${imageFileName}`;
 		},
 		formatDate(dateString) {
 			if (!dateString) return 'Tidak tersedia';

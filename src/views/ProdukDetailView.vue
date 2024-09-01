@@ -28,6 +28,7 @@ import axios from '@/libs/axios';
 import SvgIcon from '@jamescoyle/vue-icon';
 import { mdiCartPlus } from '@mdi/js';
 import { useCartStore } from '@/stores/cart';
+import { IMAGE_URL } from '@/libs/constant';
 
 export default {
 	name: 'ProdukDetailView',
@@ -83,7 +84,7 @@ export default {
 			});
 		},
 		getVariantImageUrl(imageFileName) {
-			return `${import.meta.env.VITE_BACKEND_URL}upload/${imageFileName}`;
+			return `${IMAGE_URL}${imageFileName}`;
 		},
 		formatDate(dateString) {
 			if (!dateString) return 'Tidak tersedia';

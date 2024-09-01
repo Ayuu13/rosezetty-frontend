@@ -30,6 +30,7 @@ import axios from '@/libs/axios';
 import { defineComponent } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { mapGetters } from 'vuex';
+import { IMAGE_URL } from '@/libs/constant';
 
 interface Form {
 	nama: string;
@@ -80,7 +81,7 @@ export default defineComponent({
 			}
 		},
 		getItemImageUrl(imageFileName) {
-			return `${import.meta.env.VITE_BACKEND_URL}upload/${imageFileName}`;
+			return `${IMAGE_URL}${imageFileName}`;
 		},
 		handleFileUpload(event: Event) {
 			const target = event.target as HTMLInputElement;

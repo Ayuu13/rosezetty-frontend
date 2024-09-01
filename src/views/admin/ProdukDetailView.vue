@@ -44,6 +44,7 @@
 
 <script>
 import axios from '@/libs/axios';
+import { IMAGE_URL } from '@/libs/constant';
 import { useAuthStore } from '@/stores/auth';
 import { mapGetters } from 'vuex';
 
@@ -133,7 +134,7 @@ export default {
 			return amount.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' });
 		},
 		getVariantImageUrl(imageFileName) {
-			return `${import.meta.env.VITE_BACKEND_URL}upload/${imageFileName}`;
+			return `${IMAGE_URL}${imageFileName}`;
 		},
 		addProduct() {
 			this.$router.push(`/admin/produk-varian/${this.product[0]?.id}/tambah`);

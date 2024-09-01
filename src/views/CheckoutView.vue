@@ -119,6 +119,7 @@ import axios from '@/libs/axios';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import { useCartStore } from '@/stores/cart';
+import { IMAGE_URL } from '@/libs/constant';
 
 export default {
 	name: 'CheckoutView',
@@ -159,7 +160,7 @@ export default {
 		});
 
 		const getVariantImageUrl = (imageFileName) => {
-			return `${import.meta.env.VITE_BACKEND_URL}upload/${imageFileName}`;
+			return `${IMAGE_URL}${imageFileName}`;
 		};
 
 		const checkout = async () => {

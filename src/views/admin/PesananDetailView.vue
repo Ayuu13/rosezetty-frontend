@@ -55,6 +55,7 @@
 
 <script>
 import axios from '@/libs/axios';
+import { IMAGE_URL } from '@/libs/constant';
 import { useAuthStore } from '@/stores/auth';
 import { mapGetters } from 'vuex';
 
@@ -153,7 +154,7 @@ export default {
 			return 'Rp. 0';
 		},
 		getVariantImageUrl(imageFileName) {
-			return imageFileName ? `${import.meta.env.VITE_BACKEND_URL}upload/${imageFileName}` : '';
+			return imageFileName ? `${IMAGE_URL}${imageFileName}` : '';
 		},
 	},
 };

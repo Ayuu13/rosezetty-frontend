@@ -25,6 +25,7 @@
 
 <script lang="ts">
 import axios from '@/libs/axios';
+import { IMAGE_URL } from '@/libs/constant';
 import { useAuthStore } from '@/stores/auth';
 import { mapGetters } from 'vuex';
 
@@ -54,7 +55,7 @@ export default {
 			}
 		},
 		getItemImageUrl(imageFileName: string) {
-			return `${import.meta.env.VITE_BACKEND_URL}upload/${imageFileName}`;
+			return `${IMAGE_URL}${imageFileName}`;
 		},
 		handleFileUpload(event: Event) {
 			const target = event.target as HTMLInputElement;
