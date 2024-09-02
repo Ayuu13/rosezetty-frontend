@@ -46,7 +46,7 @@ export default {
 				versi: '',
 				harga: '',
 				sistembayar_id: '',
-				gambar: '',
+				gambar: null,
 			},
 			sistemBayarList: [],
 			errorMessage: '',
