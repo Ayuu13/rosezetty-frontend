@@ -36,12 +36,11 @@
 
 <script lang="ts">
 import axios from '@/libs/axios';
-import { defineComponent } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { mapGetters } from 'vuex';
 import { IMAGE_URL } from '@/libs/constant';
 
-export default defineComponent({
+export default {
 	name: 'EditVarianProduk',
 	data() {
 		return {
@@ -152,7 +151,7 @@ export default defineComponent({
 			}
 		},
 	},
-});
+};
 </script>
 
 <style scoped>
