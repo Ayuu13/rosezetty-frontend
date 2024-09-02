@@ -27,7 +27,6 @@
 
 <script lang="ts">
 import axios from '@/libs/axios';
-import { defineComponent } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { mapGetters } from 'vuex';
 import { IMAGE_URL } from '@/libs/constant';
@@ -39,7 +38,7 @@ interface Form {
 	gambarUrl?: string; // Menyimpan URL gambar yang ada
 }
 
-export default defineComponent({
+export default {
 	name: 'EditMetodeBayar',
 	data() {
 		return {
@@ -131,7 +130,7 @@ export default defineComponent({
 			}
 		},
 	},
-});
+};
 </script>
 
 <style scoped>
