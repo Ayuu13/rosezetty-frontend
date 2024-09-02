@@ -33,11 +33,10 @@
 
 <script>
 import axios from '@/libs/axios';
-import { defineComponent, computed } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { mapGetters } from 'vuex';
 
-export default defineComponent({
+export default {
 	name: 'TambahVarianProduk',
 	data() {
 		return {
@@ -140,7 +139,7 @@ export default defineComponent({
 			}
 		},
 	},
-});
+};
 </script>
 
 <style scoped>
