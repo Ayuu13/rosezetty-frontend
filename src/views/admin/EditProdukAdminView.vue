@@ -40,7 +40,6 @@
 
 <script lang="ts">
 import axios from '@/libs/axios';
-import { defineComponent, computed } from 'vue';
 import { useAuthStore } from '@/stores/auth';
 import { mapGetters } from 'vuex';
 
@@ -63,7 +62,7 @@ interface BarangStatus {
 	nama: string;
 }
 
-export default defineComponent({
+export default {
 	name: 'EditProduk',
 	data() {
 		return {
@@ -163,7 +162,7 @@ export default defineComponent({
 			}
 		},
 	},
-});
+};
 </script>
 
 <style scoped>
