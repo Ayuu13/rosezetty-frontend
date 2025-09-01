@@ -1,29 +1,39 @@
-# rosezzty1
+🌸 Rosezzty Pre-Order E-Commerce
+Rosezzty adalah website Pre-Order E-Commerce yang menjual produk luar negeri khususnya album musik K-Pop, boneka, aksesoris, dan produk fanmade dengan fokus utama pada boygroup NCT 127.
+Sistem penjualan menggunakan Pre-Order (PO), di mana pelanggan melakukan pembayaran uang muka (DP) terlebih dahulu sebelum produk dikirim dari luar negeri.
 
-This template should help get you started developing with Vue 3 in Vite.
+📦 Estimasi kedatangan produk:
+Album: 1–2 minggu
+Boneka: 3–6 bulan
+Rosezzty berfokus pada penjualan online tanpa toko fisik. Produk dikirim dari gudang luar negeri (Korea Selatan, China, Jepang, Thailand) dan diteruskan melalui gudang utama di Indonesia (Jakarta, Semarang, Surabaya).
 
-## Recommended IDE Setup
+✨ Fitur Utama
+- Melihat produk tanpa login
+- Sistem pre-order dengan pembayaran DP
+- Registrasi & login akun pelanggan
+- Tracking status pesanan
+- Testimoni pelanggan
+- Dashboard admin untuk mengelola produk, pesanan, pembayaran, dan pelanggan
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
+🛠️ Teknologi yang Digunakan
+Frontend: Vue.js
+Backend: Express.js
+Database: MySQL
+Tools: Visual Studio Code, GitHub, Figma, Draw.io, POSTMAN
 
-## Customize configuration
+# Clone repository
+git clone https://github.com/Ayuu13/rosezetty-frontend.git
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+# Masuk ke folder project
+cd rosezetty-frontend
 
-## Project Setup
-
-```sh
+# Install dependencies
 npm install
-```
 
-### Compile and Hot-Reload for Development
-
-```sh
+# Jalankan project
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
 npm run build
-```
+
+🏠 Halaman Utama
+<img width="309" height="179" alt="image" src="https://github.com/user-attachments/assets/57e1aa7d-98af-4fab-9adb-5f3430269624" />
+
